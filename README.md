@@ -6,3 +6,4 @@ This is a project for wifi autolink wifi video transmission
 https://we.comake.online/#narrow/near/5088
 
 由于有些代码需要审查，因此需要逐步开放出来。
+有什么需求和建议，请在开发社区里讨论。
