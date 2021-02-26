@@ -1,0 +1,253 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title></title>
+<style id="system" type="text/css">*{margin:0;padding:0;}body {	font:13.34px helvetica,arial,freesans,clean,sans-serif;	color:black;	line-height:1.4em;	background-color: #F8F8F8;	padding: 0.7em;}p {	margin:1em 0;	line-height:1.5em;}table {	font-size:inherit;	font:100%;	margin:1em;}table th{border-bottom:1px solid #bbb;padding:.2em 1em;}table td{border-bottom:1px solid #ddd;padding:.2em 1em;}input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}select,option{padding:0 .25em;}optgroup{margin-top:.5em;}pre,code{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}pre {	margin:1em 0;	font-size:12px;	background-color:#eee;	border:1px solid #ddd;	padding:5px;	line-height:1.5em;	color:#444;	overflow:auto;	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;	-webkit-border-radius:3px;	-moz-border-radius:3px;border-radius:3px;white-space: pre-wrap;word-wrap:break-word;}pre code {	padding:0;	font-size:12px;	background-color:#eee;	border:none;}code {	font-size:12px;	background-color:#f8f8ff;	color:#444;	padding:0 .2em;	border:1px solid #dedede;}img{border:0;max-width:100%;}abbr{border-bottom:none;}a{color:#4183c4;text-decoration:none;}a:hover{text-decoration:underline;}a code,a:link code,a:visited code{color:#4183c4;}h2,h3{margin:1em 0;}h1,h2,h3,h4,h5,h6{border:0;}h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}h3{margin-top:1em;}hr{border:1px solid #ddd;}ul{margin:1em 0 1em 2em;}ol{margin:1em 0 1em 2em;}ul li,ol li{margin-top:.5em;margin-bottom:.5em;}ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}dt{font-weight:bold;margin-left:1em;}dd{margin-left:2em;margin-bottom:1em;}@media screen and (min-width: 768px) {    body {        width: 748px;        margin:10px auto;    }}</style><style id="custom" type="text/css"></style></head>
+<body marginheight="0"><h1>wifi自组网库(libwifilink.so)使用说明</h1>
+<h2>2019.4.10更新</h2>
+<ul>
+<li><p>增加<code>ApCfg</code>配置wifiAP-40MHz选项,当设置<code>ApCfg.Is40Mhz=true</code>时，wifiAP开启40Mhz功能。</p>
+</li>
+<li><p>新增API<code>int UpdateEncKey(uint8_t newkey[]);</code></p>
+<blockquote>
+<p>动态更新用于密钥连接的EncKey.</p>
+<ol>
+<li>参数<code>uint8_t newkey[]</code>为新的key，长度为16字节(128位)</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h2>2019.3.29更新</h2>
+<blockquote>
+<p>该版本完全托管hostapd.conf,并且要求使用默认提供的hostapd.conf,不能添加或删除参数。
+
+</p>
+<p>去掉了demo.cpp的c++11依赖。
+
+</p>
+</blockquote>
+<ul>
+<li><p>新增功能，通过密钥(与通密码连接的方式并存)的wifi私有连接协议，该协议允许经过配对后的自组网设备不通过密码而通过密钥进行连接，密钥在传输过程中也进行加密。</p>
+<blockquote>
+<ol>
+<li>使用该功能的方法为将<code>WifilinkCfg</code>中的<code>bool NoPasswdLink</code>设置为<code>true</code>,并设置一个128位的密钥<code>uint8_t EncKey[16]</code>。当在mac地址白名单中，且<code>EncKey</code>值相同的设备，则允许其互相连接。</li>
+<li>该功能开启后，通过此方法连接的wifi-sta设备，连接后将会把自己的密码和信道设置成和其连接的AP一致。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>去掉了<code>WifilinkCfg</code>里的信道设置，并增加了结构体<code>ApCfg</code>和新API<code>int GetApConfig(ApCfg *apcfg)</code>和<code>int UpdateApConfig(ApCfg *apcfg)</code>来获取和更新当前AP(hostapd)的设置。可以设置<code>ssid</code>,<code>channel</code>和<code>passwd</code>.</p>
+</li>
+<li><p>新增API <code>void ReloadAp()</code></p>
+<blockquote>
+<p>功能:重载hostapd(kill -1方式)</p>
+</blockquote>
+</li>
+<li><p>新增API <code>void RebootAp()</code></p>
+<blockquote>
+<p>功能:重启hostapd(kill -9方式)</p>
+</blockquote>
+</li>
+<li><p>新增API <code>int GetBestChannel()</code></p>
+<blockquote>
+<p>功能: 通过wifi驱动获取当前的最佳信道<br>由于该接口暂时存在问题,后续更新中修复。为保证程序正常逻辑，该版本中其会始终返回14信道。</p>
+</blockquote>
+</li>
+<li><p>新增API <code>int AddMac2MacArray(uint8_t mac_array[][6], int mac_array_num, uint8_t *mac)</code></p>
+<blockquote>
+<p>功能:向数组长度为<code>mac_array_num</code>的mac地址数组<code>mac_array[][6]</code>里的空位置(为0的位置)添加一个<code>*mac</code>
+成功返回值为0，失败返回值为-1;</p>
+</blockquote>
+</li>
+<li><p>新增API <code>int DelMac2MacArray(uint8_t mac_array[][6], int mac_array_num, uint8_t *mac)</code></p>
+<blockquote>
+<p>功能:向数组长度为<code>mac_array_num</code>的mac地址数组<code>mac_array[][6]</code>里的删除一个等于<code>*mac</code>的mac地址，将该位置的值设置为0;
+成功返回值为0，失败返回值为-1;</p>
+</blockquote>
+</li>
+</ul>
+<h2>2019.3.26更新</h2>
+<blockquote>
+<p>说明：本次更新修改0信道和15信道的替换信道，当设置信道为0时，hostaptd.conf里显示的信道为9;当设置信道为15时，hostaptd.conf里显示的信道为2.
+
+</p>
+</blockquote>
+<ul>
+<li><p>新增配置<code>int MaxLinkLevel</code>用于单个设备设置允许级连的最大层级。其中NVR或与有线网相连的节点层级为1，每经过一个节点则加1。</p>
+</li>
+<li><p>新增log设置，可以设置libwifilink.so的log打印位置和log等级。</p>
+</li>
+<li><p>新增API<code>int GetLinkStatus()</code></p>
+<blockquote>
+<p>获取当前的网络连接状态，其返回值为</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>OFFLINE</code> 离线 </li>
+<li><code>ETH_ONLINE</code> 有线网在线</li>
+<li><code>WLAN_ONLINE</code> WIFI在线</li>
+<li><code>ETH_ONLINE&amp;WLAN_ONLINE</code> WIFI和有线网同时在线</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>新增API<code>uint32_t GetWifiRate()</code></p>
+<blockquote>
+<p>返回值为当前WIFI-STA到AP的吞吐量，单位为(bit/s)</p>
+</blockquote>
+</li>
+<li><p>新增API<code>void GetFatherMac(uint8_t *mac)</code></p>
+<blockquote>
+<p>获取当前wifi连接的AP的mac地址，其结果将拷贝到参数<code>uint8_t *mac</code>数组里。</p>
+</blockquote>
+</li>
+<li><p>新增API<code>int GetChannel()</code></p>
+<blockquote>
+<p>返回值为当前wifi的信道。</p>
+</blockquote>
+</li>
+</ul>
+<h2>初始化使用配置(WifilinkCfg@wifilink.h)</h2>
+<ul>
+<li><code>int(*save_cb)(char*,size_t)</code><blockquote>
+<p>写入文件回调函数，该库使用的所有写入文件操作都将使用该回调函数,使用方法见main.cpp</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>char*</code> 为buff指针</li>
+<li><code>size_t</code> 为数据长度</li>
+<li>返回值为成功写入的长度;</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>int(*load_cb)(char*,size_t)</code><blockquote>
+<p>读取文件回调函数，该库使用的所有读取文件操作都将使用该回调函数,使用方法见main.cpp</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li><code>char*</code> 为buff指针</li>
+<li><code>size_t</code> 为数据长度</li>
+<li>返回值为成功写入的长度，失败时返回值小于0;</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><code>void(*setip_cb)(const char *ifname)</code></p>
+<blockquote>
+<p>设置ip回调函数，当任意网络(wifi和有线网络)连接上时，都会调用此函数。</p>
+<ul>
+<li><code>const char *ifname</code> 为网卡名称("eth0"或"br0")</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>double a,b,c,d</code></p>
+<blockquote>
+<p>该4个变量为自组网算法参数，无必要修改时，使用默认参数</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>默认参数 a = -45, b = -85, c = 0.7, d = 0.12</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><code>char ApIfName[10]</code></p>
+<blockquote>
+<p>WifiAP的网卡名称，需要设置成与hostapd.conf中的<code>interface</code>参数一致。</p>
+</blockquote>
+</li>
+<li><p><code>bool WifiDbg</code></p>
+<blockquote>
+<p>wifi驱动debug模式开关</p>
+</blockquote>
+</li>
+<li><p><code>int Channel</code></p>
+<blockquote>
+<p>设置信道，有效值为[0,15]。其中0和15为特殊频率</p>
+</blockquote>
+</li>
+<li><p><code>bool TxPower</code></p>
+<blockquote>
+<p>Wifi驱动加大功率开关</p>
+</blockquote>
+</li>
+<li><p><code>bool CustomGroup</code></p>
+<blockquote>
+<p>使用自定义自组网分组规则开关</p>
+<ul>
+<li>当该值设置为<code>true</code>时，将使用自定义的mac地址白名单，并关闭默认自组网分组配对算法</li>
+<li>设置为<code>false</code>则使用默认自组网分组配对算法</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>uint8_t mac_db[14][6]</code></p>
+<blockquote>
+<p>配合<code>bool CustomGroup</code>使用，当<code>bool CustomGroup</code>设置为<code>true</code>时该参数有效。wifi自组网将使用该mac地址进行分组过滤。<br>
+初始化后使用<code>int UpdateCustomMacDb(uint8_t **mac_db)</code>更新该数组。</p>
+</blockquote>
+</li>
+<li><p><code>bool EthFirst</code></p>
+<blockquote>
+<p>有线网络优先模式: </p>
+<ul>
+<li>当该参数设置成<code>true</code>时，有线网(eth0)连接后将关闭wifi连接，并提供AP服务，将AP与有线网络桥接。&lt;</li>
+<li>当该参数设置成<code>false</code>时，有线网(eth0)将与wifi共存，互不影响，当(需要自己设置路由规则)</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>int DelayTimes</code></p>
+<blockquote>
+<p>wifi网络延迟切换时间参数。当wifi扫描到比当前连接的wifi-AP综合质量更优的AP时，将会根据此参数设定决定是否切换。</p>
+<ul>
+<li>wifi扫描频率为15s，延迟时间 = DelayTimes*15s</li>
+<li>例如将DelayTimes设置成4，则当前连接的wifi-AP在60秒的每次扫描结果中都不是综合质量(算法决定)最优的AP，则会切换至最优AP</li>
+<li>将该参数设置为0则每次发现更优AP都会切换。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2>常规函数</h2>
+<ul>
+<li><p><code>int WifiLinkInit(WifilinkCfg *cfg)</code></p>
+<blockquote>
+<p>初始化</p>
+<ul>
+<li><code>*cfg</code> 初始化配置</li>
+</ul>
+</blockquote>
+</li>
+<li><p><code>void WifiLinkIPCLoop()</code></p>
+<blockquote>
+<p>IPC模式运行，该函数为阻塞函数。</p>
+</blockquote>
+</li>
+<li><p><code>void WifiLinkNVRLoop()</code></p>
+<blockquote>
+<p>NVR模式运行，该函数为阻塞函数。</p>
+</blockquote>
+</li>
+<li><p><code>void WifiLinkCancel()</code></p>
+<blockquote>
+<p>使<code>WifiLinkIPCLoop()</code>和<code>WifiLinkNVRLoop()</code>停止运行。</p>
+</blockquote>
+</li>
+<li><p><code>int UpdateCustomMacDb(uint8_t mac_db[][6])</code></p>
+<blockquote>
+<p>更新自定义自组网分组配对算法中的mac白名单，其中<code>mac_db</code>的大小为<code>uint8_t[8][6]</code>。最多记录8个mac地址，不包含自己的mac地址。
+<br>当<code>CustomGroup</code>设置为<code>true</code>时该函数才生效。</p>
+</blockquote>
+</li>
+<li><p><code>void GetNodeInfo(NodeInfo **nInfo)</code></p>
+<blockquote>
+<p>获取当前wifi网络中，每个节点的mac地址和其连接的父节点的mac地址。该数据是保存在各台设备中的缓存，当某台设备离线候，则保留它最后一次更新的状态。(不能用此接口判断设备是否在线)</p>
+<ul>
+<li>当使用自定义自组网分组规则时(<code>CustomGroup = true</code>),该函数无效</li>
+<li>不需要为<code>NodeInfo *nInfo</code>分配内存</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<div id="gtx-trans" style="position: absolute; left: 138px; top: 211.523px;"><div class="gtx-trans-icon"></div></div></body></html>

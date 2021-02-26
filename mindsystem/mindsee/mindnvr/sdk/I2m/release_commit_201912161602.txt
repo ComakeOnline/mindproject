@@ -1,0 +1,11 @@
+1.boot:    commit 3a952ac0b924d62d579b03a533d60974dcfb6867
+2.build:   commit b5b01c7dc37fc04bce0c834b54d9c6629590d806
+3.kernel:  commit 8120673be6d61584000bef55b997b676414775ae
+4.project: commit 103c4c7d240730fa175788d2126e4d4171bc516a
+5.include: commit 6f66a784c4965e20a636aeb7967556fb9d3a2c92
+6.apitool: commit 1c92cb3571fad9b6d93fbdba050e720c1c523bc5
+7.cal_tool:commit 2dd62647e16d9a987d479d3120f1dae5e076c936
+8.sdk:     commit b774c1adf7e94419c5ac67b8b03adeff185f7589
+9.Driver:  commit cd79ae8e654350f7e80359648f1bb38fa8ddf2f8
+10.mhal:   commit 3e6cac9077e3e37740e46ceea7c80667dc97a0f1
+11.mixer:  commit 0367898b70f81c5430b33bf7b05e01efcca4a278

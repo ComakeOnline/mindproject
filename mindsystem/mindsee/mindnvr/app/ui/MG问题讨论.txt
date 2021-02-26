@@ -1,0 +1,49 @@
+LRESULT UI_ProcMainScreen(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{	
+	switch(message)
+	{
+		case MSG_CREATE:			// 完成窗口创建时的工作，包括绘图
+			return 0;
+		case MSG_INITDIALOG:		// 初始化对话框
+			break;
+		case MSG_ERASEBKGND:		// 背景擦除，需要配合MSG_PAINT 使用。
+			break;
+		case MSG_FONTCHANGED:		// 字体改变。
+			break;
+		case MSG_PAINT:				// UI绘图主要在这部分完成
+			break;
+		case MSG_CLOSE:				// 关闭窗口时进行资源清理工作
+			break;
+		case MSG_COMMAND:			// 窗口中所有控件的消息在此处理
+			switch(wParam)
+			{
+				case ID_BACK:
+					break;
+				case ID_ENSURE:
+					break;
+				break;
+			}
+			break;		
+		case MSG_LBUTTONDOWN:		// 触摸按下
+			break;
+		case MSG_LBUTTONUP:			// 触摸抬起
+			break;
+		case MSG_MOUSEMOVE:			// 触摸移动
+			break;
+		case MSG_CUSTOMER0:			// 用户自定义消息，括人形检测的消息
+		case MSG_CUSTOMER1:
+		case MSG_CUSTOMER2:
+			break;
+			.
+			.
+			.
+		case MSG_IDLE:				// 无消息时执行休眠。配合定时器完成长按触摸的识别。
+			break;
+		default:
+			break;
+	}
+
+	// MiniGUI 默认窗口过程函数。
+	return DefaultMainWinProc(hWnd, message, wParam, lParam);
+}
+

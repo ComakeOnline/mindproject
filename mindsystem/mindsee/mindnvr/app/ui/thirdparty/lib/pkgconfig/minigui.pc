@@ -1,0 +1,12 @@
+prefix=/home/linux/Public/minigui3.0.12armv7
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: MiniGUI
+Description: A windowing system for embedded system.
+Version: 3.0.12
+Requires:
+Libs: -L${libdir} -lminigui_ths  -L/home/linux/Public/minigui3.0.12armv7/lib -lfreetype -ljpeg -lpng -ldl -lm -lts -lpthread
+Libs.private:
+Cflags: -I${includedir} -I/home/linux/Public/minigui3.0.12armv7/include/freetype2

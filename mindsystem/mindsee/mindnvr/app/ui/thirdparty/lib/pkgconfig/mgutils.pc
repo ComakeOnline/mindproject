@@ -1,0 +1,12 @@
+prefix=/home/linux/Public/minigui3.0.12armv7
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: mGUtils
+Description: A MiniGUI component which contains miscellaneous utilities like ColorSelectionDialogBox, FileOpenDialogBox, and so on.
+Version: 1.0.4
+Requires:
+Libs: -L${libdir} -lmgutils
+Libs.private:
+Cflags: -I${includedir} 

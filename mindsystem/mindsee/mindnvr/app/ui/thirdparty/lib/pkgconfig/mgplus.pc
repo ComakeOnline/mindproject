@@ -1,0 +1,12 @@
+prefix=/home/linux/Public/minigui3.0.12armv7
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: mGPlus
+Description: A MiniGUI component which provides support for advanced 2D graphics functions.
+Version: 1.2.4
+Requires:
+Libs: -L${libdir} -lmgplus @PC_LIBS@
+Libs.private:
+Cflags: -I${includedir} @MGPLUS_INCLUDE_LIST@

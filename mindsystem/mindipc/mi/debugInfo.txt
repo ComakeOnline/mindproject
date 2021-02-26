@@ -1,0 +1,605 @@
+/proc/mi_modules # cat mi_sensor/mi_sensor0 
+
+-----------------------------------------Common info for mi_sensor-----------------------------------------
+  ChnNum  EnChnNum  PassNum  InPortNum  OutPortNum  CollectSize
+       1         0        1          0           1            0
+
+----------------------CMDQ kickoff counter-----------------------
+  DevId    current_buf_size  Peak_buf_size
+      0                   0              0
+each dev buf info:
+              offset              length           used_flag           task_name
+
+------------------------------Common info formi_sensor only dump enabled chn------------------------------
+  ChnId PassNum  EnInPNum  EnOutPNum  MMAHeapName
+
+-------------------------Input port common info for mi_sensor  only dump enabled port---------------------
+  ChnId  PassId  PortId  user_buf_quota  UsrInjectQ_cnt  BindInQ_cnt     TotalPendingBuf_size  usrLockedInjectCnt
+  ChnId  PassId  PortId  newPulseQ_cnt  nextTodoPulseQ_cnt     curWorkingQ_cnt     workingTask_cnt      
+lazzyRewindTask_cnt
+
+
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+  ChnId  PassId  PortId  SrcFrmrate  DstFrmrate    GetFrame/Ms    FPS   FinishCnt   RewindCnt
+
+----------------------Output port common info for mi_sensor  only for enabled port---------------------
+  ChnId  PassId  PortId usrDepth  BufCntQuota  usrLockedCnt  totalOutPortInUsed   DrvBkRefFifoQ_cnt  DrvBkRefFifoQ_size
+  ChnId  PassId  PortId  UsrGetFifoQ_cnt UsrGetFifoQ_size  UsrGetFifoQ_seqnum  UsrGetFifoQ_discardnum
+  ChnId  PassId  PortId  workingTask_cnt finishedTask_cnt
+  ChnId  PassId  PortId    GetFrame/Ms    FPS   FinishCnt   RewindCnt    GetTotalCnt    GetOkCnt
+
+----------------------------------------BindPeerInputPortList---------------------------------------
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+-------------------------- start dump Pad info --------------------------------
+  PadId  PlaneMode  bEnable  bmirror  bflip  fps  ResCnt  intfmode  hdrmode  planecnt
+      0          0        1        0      0   25       1      MIPI        2         2
+       MipiAttr  YuvOrder  HdrHwMode  DataFmt  HdrVchNum  HsyncMode  LaneNum LPackType0 LPackType1  samDelay
+                        0          1        0          0          0        0          0          0         0
+       Res        strResDesc  CropX  CropY  CropW  CropH  OutW  OutH  MaxFps  MinFps
+             1920x1080@30fps      0      0   1920   1080  1948  1097      30       3
+       Cur   1920x1080@30fps      0      0   1920   1080  1948  1097      30       3
+-------------------------- End dump Pad  info --------------------------------
+
+-------------------------- start dump plane info --------------------------------
+  Padid  Planeid             SnrName  BayerId  ePixPrec  eHdrSrc  CropX  CropY  CropW  CropH
+      0        0         IMX307_MIPI       RG     12BPP        0      0      0   1920   1080
+      0        0         IMX307_MIPI       RG     12BPP        0      0      0   1920   1080
+
+
+
+
+
+
+
+
+
+
+
+
+
+/proc/mi_modules # cat mi_vif/mi_vif0 
+
+-----------------------------------------Common info for mi_vif-----------------------------------------
+  ChnNum  EnChnNum  PassNum  InPortNum  OutPortNum  CollectSize
+       8         1        1          0           2            0
+
+----------------------CMDQ kickoff counter-----------------------
+  DevId    current_buf_size  Peak_buf_size
+      0                   0              0
+each dev buf info:
+              offset              length           used_flag           task_name
+
+------------------------------Common info formi_vif only dump enabled chn------------------------------
+  ChnId PassNum  EnInPNum  EnOutPNum  MMAHeapName
+  ChnId    current_buf_size  Peak_buf_size  user_pid
+      0                   0              0       533
+each chn buf info:
+              offset              length           used_flag           task_name
+
+-------------------------Input port common info for mi_vif  only dump enabled port---------------------
+  ChnId  PassId  PortId  user_buf_quota  UsrInjectQ_cnt  BindInQ_cnt     TotalPendingBuf_size  usrLockedInjectCnt
+  ChnId  PassId  PortId  newPulseQ_cnt  nextTodoPulseQ_cnt     curWorkingQ_cnt     workingTask_cnt      
+lazzyRewindTask_cnt
+
+
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+  ChnId  PassId  PortId  SrcFrmrate  DstFrmrate    GetFrame/Ms    FPS   FinishCnt   RewindCnt
+
+----------------------Output port common info for mi_vif  only for enabled port---------------------
+  ChnId  PassId  PortId usrDepth  BufCntQuota  usrLockedCnt  totalOutPortInUsed   DrvBkRefFifoQ_cnt  DrvBkRefFifoQ_size
+      0       0       0        0            6             0                   0                   0                   0
+  ChnId  PassId  PortId  UsrGetFifoQ_cnt UsrGetFifoQ_size  UsrGetFifoQ_seqnum  UsrGetFifoQ_discardnum
+      0       0       0                0                0                   0                       0
+  ChnId  PassId  PortId  workingTask_cnt finishedTask_cnt
+      0       0       0                1                0
+  ChnId  PassId  PortId    GetFrame/Ms    FPS   FinishCnt   RewindCnt    GetTotalCnt    GetOkCnt
+      0       0       0        26/1039  25.02       60209           0          60210       60210
+
+----------------------------------------BindPeerInputPortList---------------------------------------
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+      0       0       0       1               7            mi_vpe           0            0         4            
+0       1
+
+
+----------------------------------dump Dev Attr--------------------------------------------------
+  Dev  Intf       Work  Clk  Hdr  IsrCnt  AsyncCnt  EnqCnt  BarCnt  CheckCnt  DequCnt
+    0  MIPI   RGB_REAL    2    0   60218    120433   60218   60210    120419    60209
+
+-------------------------------------dump outport attr-----------------------------------------------
+  Dev  Chn  Port       Cap_size  Dest_size  Sel  Scan       Fmt  Rate  LineCnt  Atom       MetaInfo  OutCount  
+FailCount  Fps
+
+    0    0     0(0,0,1920,1080)(1920,1080)    3     0  RG_12BPP     0     1080     1              0      
+eb31          8   26
+
+
+  Dev  Chn  Port   Recv_size    Out_size SubOut_size  ReadIdx  WriteIdx  DequeIdx  FrameStartCnt  FrameDoneCnt  
+VbFail  DropFrameCnt     RingBufStatus
+
+    0    0     0 (   0,   0) (   0,   0) (   0,   0)        0         0         0           eb2b             0       
+0             0 (3,3,3,3,3,3,3,3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/proc/mi_modules # cat mi_vif/mi_vif1
+
+-----------------------------------------Common info for mi_vif-----------------------------------------
+  ChnNum  EnChnNum  PassNum  InPortNum  OutPortNum  CollectSize
+       8         0        1          0           2            0
+
+----------------------CMDQ kickoff counter-----------------------
+  DevId    current_buf_size  Peak_buf_size
+      1                   0              0
+each dev buf info:
+              offset              length           used_flag           task_name
+
+------------------------------Common info formi_vif only dump enabled chn------------------------------
+  ChnId PassNum  EnInPNum  EnOutPNum  MMAHeapName
+
+-------------------------Input port common info for mi_vif  only dump enabled port---------------------
+  ChnId  PassId  PortId  user_buf_quota  UsrInjectQ_cnt  BindInQ_cnt     TotalPendingBuf_size  usrLockedInjectCnt
+  ChnId  PassId  PortId  newPulseQ_cnt  nextTodoPulseQ_cnt     curWorkingQ_cnt     workingTask_cnt      
+lazzyRewindTask_cnt
+
+
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+  ChnId  PassId  PortId  SrcFrmrate  DstFrmrate    GetFrame/Ms    FPS   FinishCnt   RewindCnt
+
+----------------------Output port common info for mi_vif  only for enabled port---------------------
+  ChnId  PassId  PortId usrDepth  BufCntQuota  usrLockedCnt  totalOutPortInUsed   DrvBkRefFifoQ_cnt  DrvBkRefFifoQ_size
+  ChnId  PassId  PortId  UsrGetFifoQ_cnt UsrGetFifoQ_size  UsrGetFifoQ_seqnum  UsrGetFifoQ_discardnum
+  ChnId  PassId  PortId  workingTask_cnt finishedTask_cnt
+  ChnId  PassId  PortId    GetFrame/Ms    FPS   FinishCnt   RewindCnt    GetTotalCnt    GetOkCnt
+
+----------------------------------------BindPeerInputPortList---------------------------------------
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+----------------------------------dump Dev Attr--------------------------------------------------
+  Dev  Intf       Work  Clk  Hdr  IsrCnt  AsyncCnt  EnqCnt  BarCnt  CheckCnt  DequCnt
+    0  MIPI   RGB_REAL    2    0   61547    123091   61547   61539    123077    61538
+
+-------------------------------------dump outport attr-----------------------------------------------
+  Dev  Chn  Port       Cap_size  Dest_size  Sel  Scan       Fmt  Rate  LineCnt  Atom       MetaInfo  OutCount  
+FailCount  Fps
+
+    0    0     0(0,0,1920,1080)(1920,1080)    3     0  RG_12BPP     0     1080     1              0      
+f062          8   26
+
+
+  Dev  Chn  Port   Recv_size    Out_size SubOut_size  ReadIdx  WriteIdx  DequeIdx  FrameStartCnt  FrameDoneCnt  
+VbFail  DropFrameCnt     RingBufStatus
+
+    0    0     0 (   0,   0) (   0,   0) (   0,   0)        0         0         0           f05c             0       
+0             0 (3,3,3,3,3,3,3,3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/proc/mi_modules # cat mi_vpe/mi_vpe0 
+
+-----------------------------------------Common info for mi_vpe-----------------------------------------
+  ChnNum  EnChnNum  PassNum  InPortNum  OutPortNum  CollectSize
+       2         1        3          2           4            0
+
+----------------------CMDQ kickoff counter-----------------------
+  PassId      CmdqId    TotalKickoff    KickoffFence            Idle
+       0           1          192902           64299               8
+  DevId    current_buf_size  Peak_buf_size
+      0                   0              0
+each dev buf info:
+              offset              length           used_flag           task_name
+
+------------------------------Common info formi_vpe only dump enabled chn------------------------------
+  ChnId PassNum  EnInPNum  EnOutPNum  MMAHeapName
+      0       0       1          2       (null)
+  ChnId    current_buf_size  Peak_buf_size  user_pid
+      0              76c000         b05000       533
+each chn buf info:
+              offset              length           used_flag           task_name
+              c84000              2fd000                   1         vpe0-out0-1
+              f81000               28000                   1          ISP_STATIS
+              fa9000                3000                   1           ISP_MLOAD
+              fac000                1000                   1             ISP_WDR
+              fad000                e000                   1            ISP_CMDQ
+             13ad000               9c000                   1         vpe0-out0-2
+             144a000               9c000                   1         vpe0-out0-2
+             14e9000              2fd000                   1         vpe0-out0-1
+
+-------------------------Input port common info for mi_vpe  only dump enabled port---------------------
+  ChnId  PassId  PortId  user_buf_quota  UsrInjectQ_cnt  BindInQ_cnt     TotalPendingBuf_size  usrLockedInjectCnt
+      0       0       0               4               0            2                        0                   0
+      0       1       0               4               0            0                        0                   0
+      0       2       0               4               0            0                        0                   0
+  ChnId  PassId  PortId  newPulseQ_cnt  nextTodoPulseQ_cnt     curWorkingQ_cnt     workingTask_cnt      
+lazzyRewindTask_cnt
+
+      0       0       0              0                   0                   0                   
+2                        0
+
+      0       1       0              0                   0                   0                   
+0                        0
+
+      0       2       0              0                   0                   0                   
+0                        0
+
+
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+      0       0       0       1               6            mi_vif           0            0         4            
+0       1
+
+
+  ChnId  PassId  PortId  SrcFrmrate  DstFrmrate    GetFrame/Ms    FPS   FinishCnt   RewindCnt
+      0       0       0       25/ 1       25/ 1        26/1040  25.00       64304           0
+      0       1       0        0/ 0        0/ 0         0/   1   0.00           0           0
+      0       2       0        0/ 0        0/ 0         0/   1   0.00           0           0
+
+----------------------Output port common info for mi_vpe  only for enabled port---------------------
+  ChnId  PassId  PortId usrDepth  BufCntQuota  usrLockedCnt  totalOutPortInUsed   DrvBkRefFifoQ_cnt  DrvBkRefFifoQ_size
+      0       0       1        0            5             0                   2                   0                   0
+      0       0       2        0            5             0                   2                   0                   0
+      0       1       0        0            4             0                   0                   0                   0
+  ChnId  PassId  PortId  UsrGetFifoQ_cnt UsrGetFifoQ_size  UsrGetFifoQ_seqnum  UsrGetFifoQ_discardnum
+      0       0       1                0                0                   0                       0
+      0       0       2                0                0                   0                       0
+      0       1       0                0                0                   0                       0
+  ChnId  PassId  PortId  workingTask_cnt finishedTask_cnt
+      0       0       1                2                0
+      0       0       2                2                0
+      0       1       0                0                0
+  ChnId  PassId  PortId    GetFrame/Ms    FPS   FinishCnt   RewindCnt    GetTotalCnt    GetOkCnt
+      0       0       1        26/1040  25.00       64289           8          64305       64299
+      0       0       2        26/1040  25.00       64289           7          64299       64298
+      0       1       0         0/   1   0.00           0           0              0           0
+
+----------------------------------------BindPeerInputPortList---------------------------------------
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+      0       0       1       1               2           mi_venc           1            0         1            
+0       1
+
+      0       0       2       1               2           mi_venc           2            0         1            
+0       1
+
+
+-------------------------- start dump VPE DEV info --------------------------------
+  DevID  InitCnt  CreChnNum  Point  scllevel  chip  cmdq(0,1,2)
+      0        1          1   3402         2     4c1bb0b88,  (null),  (null)
+
+   DevID  IrqName  En   Mode  num  VsyncCnt  FrameDoneCnt  DropCnt   LowLatencyIsrCnt
+      0  MainScl   1  0x a7   27     64298         64297        0      0,    0,    0
+      0   SubScl   0  0x120   28         0             0        0      0,    0,    0
+      0      Isp   1  0x  2   31     64301             0        0      0,    0,    0
+-------------------------- End dump VPE dev 0 info --------------------------------
+
+-------------------------- start dump VPE CHN info --------------------------------
+  ChnId  status      MaxWH  bEnLdc  ChnPortMode  SensorId  RunMode                 Crop
+      0   Start  1920x1080       0            0         0 RealTime(   0,   0,   0,   0)
+
+  ChnId  Rot  bMirr/flip  Gradient  ActEn  3DNRLevel  HdrMode
+      0    0(   0,    0)         0      0          0        0
+
+   ChnId  passid  bUsed     InSize   Inpixel  InStride  SclOutMode  SclInSize  Atom  Atom0Cnt
+      0       0      1(1920x1080)  RG_12BPP         0         107(1920x1080)     2         0
+      0       1      0                                                           0
+      0       2      0(   0x   0)YUV422YUYV         0           0(   0x   0)     0         0
+
+   ChnId  passid  PreCnt  EnqCnt  BarCnt  checkin  checkout  DeqCnt  DropCnt  EnqOTNull
+      0       0   64306   64305   64299    64297     64297   64297       15          0
+      0       1       0       0       0        0         0       0        0          0
+      0       2       0       0       0        0         0       0        0          0
+-------------------------- End dump VPE CHN info -------------------------------
+
+-------------------------- start dump VPE OUTPUT PORT info -----------------------
+  ChnId  PortId  passid  bindtype  Enable      Pixel  bMirr/flip           PortCrop  OutputW  OutputH  Histogram  
+MatchLine  Stride  GetCnt  FailCnt  FinishCnt  fps
+
+      0       0       0    Real       0        MAX(   0,    0)   0,   0,   0,   0        0        0          
+0          0       0       0        0        0     0.00
+
+      0       1       0   Frame       1   YUV420SP(   0,    0)   0,   0,1920,1080     1920     1080        
+716          0    1920   64299        6    64297    24.99
+
+      0       2       0   Frame       1   YUV420SP(   0,    0)   0,   0,   0,   0      720      576        
+682          0     736   64298        1    64296    25.00
+
+      0       3       0               0        MAX                                       0        0     
+262144          0       0       0        0        0     0.00
+
+-------------------------- End dump VPE OUTPUT PORT info -------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/proc/mi_modules # cat mi_venc/mi_venc0
+
+-----------------------------------------Common info for mi_venc-----------------------------------------
+  ChnNum  EnChnNum  PassNum  InPortNum  OutPortNum  CollectSize
+      16         2        1          1           0            0
+
+----------------------CMDQ kickoff counter-----------------------
+  DevId    current_buf_size  Peak_buf_size
+      0              682000         682000
+each dev buf info:
+              offset              length           used_flag           task_name
+               82000              682000                   1            venc_dev
+
+------------------------------Common info formi_venc only dump enabled chn------------------------------
+  ChnId PassNum  EnInPNum  EnOutPNum  MMAHeapName
+      1       0       1          0       (null)
+      2       0       1          0       (null)
+  ChnId    current_buf_size  Peak_buf_size  user_pid
+      1              52c000         52c000       533
+each chn buf info:
+              offset              length           used_flag           task_name
+              704000               fe000                   1      venc-ring-mem1
+              802000               21000                   1         venc_work_0
+              823000              36e000                   1        venc_rec_0_0
+              b91000               21000                   1           venc_mv_0
+              bb2000               23000                   1        venc_fbcty_0
+              bd5000               12000                   1        venc_fbctc_0
+              be7000               41000                   1          venc_rdo_0
+              c28000                7000                   1         venc_task_0
+              c2f000                1000                   1         venc_inst_0
+  ChnId    current_buf_size  Peak_buf_size  user_pid
+      2              149000         149000       533
+each chn buf info:
+              offset              length           used_flag           task_name
+              c30000               33000                   1      venc-ring-mem2
+              c63000               21000                   1         venc_work_1
+              fbb000               c8000                   1        venc_rec_1_0
+             1083000                8000                   1           venc_mv_1
+             108b000                8000                   1        venc_fbcty_1
+             1093000                6000                   1        venc_fbctc_1
+             1099000                f000                   1          venc_rdo_1
+             10a8000                7000                   1         venc_task_1
+             10af000                1000                   1         venc_inst_1
+
+-------------------------Input port common info for mi_venc  only dump enabled port---------------------
+  ChnId  PassId  PortId  user_buf_quota  UsrInjectQ_cnt  BindInQ_cnt     TotalPendingBuf_size  usrLockedInjectCnt
+      1       0       0               4               0            0                        0                   0
+      2       0       0               4               0            0                        0                   0
+  ChnId  PassId  PortId  newPulseQ_cnt  nextTodoPulseQ_cnt     curWorkingQ_cnt     workingTask_cnt      
+lazzyRewindTask_cnt
+
+      1       0       0              0                   0                   0                   
+0                        0
+
+      2       0       0              0                   0                   0                   
+0                        0
+
+
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+      1       0       0       1               7            mi_vpe           0            1         1            
+0       1
+
+      2       0       0       1               7            mi_vpe           0            2         1            
+0       1
+
+
+  ChnId  PassId  PortId  SrcFrmrate  DstFrmrate    GetFrame/Ms    FPS   FinishCnt   RewindCnt
+      1       0       0       25/ 1       25/ 1        26/1039  25.02       66580           0
+      2       0       0       25/ 1       25/ 1        26/1039  25.02       66580           0
+
+----------------------Output port common info for mi_venc  only for enabled port---------------------
+  ChnId  PassId  PortId usrDepth  BufCntQuota  usrLockedCnt  totalOutPortInUsed   DrvBkRefFifoQ_cnt  DrvBkRefFifoQ_size
+  ChnId  PassId  PortId  UsrGetFifoQ_cnt UsrGetFifoQ_size  UsrGetFifoQ_seqnum  UsrGetFifoQ_discardnum
+  ChnId  PassId  PortId  workingTask_cnt finishedTask_cnt
+  ChnId  PassId  PortId    GetFrame/Ms    FPS   FinishCnt   RewindCnt    GetTotalCnt    GetOkCnt
+
+----------------------------------------BindPeerInputPortList---------------------------------------
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+------------------------------ All VENC Dev info ------------------------------
+------------------------------- VENC 0 Dev info -------------------------------
+  DevId  IrqNum IsrTotalCnt  IsrFrmDoneCnt  IsrBufFullCnt IsrSliceDoneCnt IsrRingFullCnt  IsrTimeoutCnt IsrOtherCnt
+      0  26/  0        7652           7652        0,   0               0              0              0           0
+  DevId  MaxTaskCnt    WorkingTaskCnt  UtilHw  UtilMi  PeakHw  PeakMi     FPS      MbRate   %
+      0           2                 0       0       0       0       0   25.00      244500  36
+  DevId SupportRing  SupportImi NeedPadding  CmdqHandle CmdqBufSize  ResetTime
+      0           1           0           0      (null)           0          0
+
+------------------------------- VENC 0 CHN info -------------------------------
+ChnId  DevId  bStart  RefMemPA  RefMemSize  AlMemPA  AlMemVA  AlMemSize
+    1      0       1         0           0        0   (null)          0
+    2      0       1         0           0        0   (null)          0
+ChnId  State  EnPred  base  enhance MaxStreamCnt  FrameIdx  Gardient  Fps_1s    kbps  Fps10s    kbps
+    1      0       0     0        0            3         4       705   25.00    1628   25.00    1581
+    2      0       0     0        0            3         2       707    0.00       0    0.00       0
+ChnId  RingBufStartLine  RingBufHeight QueryCnt   GetStreamCnt   RlsStreamCnt   PollReadyCnt    PollFailCnt
+    1                 0              0     7649           7649           7649           7649          25481
+    2                 0              0        0              0              0              0              0
+----------------------------- InputPort of dev: 0 -----------------------------
+ChnId  Width  Height  SrcFrmRate  MaxW  MaxH  FrameCnt  DropCnt  BlockCnt
+    1   1920    1080    25/1      1920  1080      7649    58931         0
+    2    720     576    25/1       720   576         3    66577         0
+---------------------------- OutputPort of dev: 0 -----------------------------
+ChnId  CODEC  Profile   BufSize MinAllocSize  RefNum  bByFrame  FrameCnt  DropCnt  ReEncCnt  RingUnreadCnt  
+RingTotalCnt   UsrLockedCnt
+
+    1   H265        0   1036800       345600       0         1      7649        0         0              
+0             0              0
+
+    2   H264        0    207360        69120       0         1         3        0         0              
+3             3              0
+
+ChnId RateCtl  GOP MaxBitrate  IPQPDelta  MaxQp  MinQp  MaxIQp  MinIQp  QpMap  AbsQp  ModeMap
+    1     CBR   30    1572864          0     48     12      48      12      0      0        0
+    2     CBR   30    2097152          0     48     12      48      12      0      0        0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/proc/mi_modules # cat mi_venc/mi_venc1
+
+-----------------------------------------Common info for mi_venc-----------------------------------------
+  ChnNum  EnChnNum  PassNum  InPortNum  OutPortNum  CollectSize
+      16         0        1          1           0            0
+
+----------------------CMDQ kickoff counter-----------------------
+  DevId    current_buf_size  Peak_buf_size
+      1                   0              0
+each dev buf info:
+              offset              length           used_flag           task_name
+
+------------------------------Common info formi_venc only dump enabled chn------------------------------
+  ChnId PassNum  EnInPNum  EnOutPNum  MMAHeapName
+
+-------------------------Input port common info for mi_venc  only dump enabled port---------------------
+  ChnId  PassId  PortId  user_buf_quota  UsrInjectQ_cnt  BindInQ_cnt     TotalPendingBuf_size  usrLockedInjectCnt
+  ChnId  PassId  PortId  newPulseQ_cnt  nextTodoPulseQ_cnt     curWorkingQ_cnt     workingTask_cnt      
+lazzyRewindTask_cnt
+
+
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+  ChnId  PassId  PortId  SrcFrmrate  DstFrmrate    GetFrame/Ms    FPS   FinishCnt   RewindCnt
+
+----------------------Output port common info for mi_venc  only for enabled port---------------------
+  ChnId  PassId  PortId usrDepth  BufCntQuota  usrLockedCnt  totalOutPortInUsed   DrvBkRefFifoQ_cnt  DrvBkRefFifoQ_size
+  ChnId  PassId  PortId  UsrGetFifoQ_cnt UsrGetFifoQ_size  UsrGetFifoQ_seqnum  UsrGetFifoQ_discardnum
+  ChnId  PassId  PortId  workingTask_cnt finishedTask_cnt
+  ChnId  PassId  PortId    GetFrame/Ms    FPS   FinishCnt   RewindCnt    GetTotalCnt    GetOkCnt
+
+----------------------------------------BindPeerInputPortList---------------------------------------
+  ChnId  PassId  PortId  Enable  bind_module_id  bind_module_name  bind_ChnId  bind_PortId bind_Type   bind_Param  
+enable
+
+
+------------------------------ All VENC Dev info ------------------------------
+------------------------------- VENC 1 Dev info -------------------------------
+  DevId  IrqNum IsrTotalCnt  IsrFrmDoneCnt  IsrBufFullCnt IsrSliceDoneCnt IsrRingFullCnt  IsrTimeoutCnt IsrOtherCnt
+      0  26/  0        8213           8213        0,   0               0              0              0           0
+  DevId  MaxTaskCnt    WorkingTaskCnt  UtilHw  UtilMi  PeakHw  PeakMi     FPS      MbRate   %
+      0           2                 0       0       0       0       0   24.99      244500  36
+  DevId SupportRing  SupportImi NeedPadding  CmdqHandle CmdqBufSize  ResetTime
+      0           1           0           0      (null)           0          0
+
+------------------------------- VENC 1 CHN info -------------------------------
+ChnId  DevId  bStart  RefMemPA  RefMemSize  AlMemPA  AlMemVA  AlMemSize
+    1      0       1         0           0        0   (null)          0
+    2      0       1         0           0        0   (null)          0
+ChnId  State  EnPred  base  enhance MaxStreamCnt  FrameIdx  Gardient  Fps_1s    kbps  Fps10s    kbps
+    1      0       0     0        0            3         4       711   25.00    1667   24.99    1566
+    2      0       0     0        0            3         2       707    0.00       0    0.00       0
+ChnId  RingBufStartLine  RingBufHeight QueryCnt   GetStreamCnt   RlsStreamCnt   PollReadyCnt    PollFailCnt
+    1                 0              0     8210           8210           8210           8210          27348
+    2                 0              0        0              0              0              0              0
+----------------------------- InputPort of dev: 1 -----------------------------
+ChnId  Width  Height  SrcFrmRate  MaxW  MaxH  FrameCnt  DropCnt  BlockCnt
+    1   1920    1080    25/1      1920  1080      8210    58931         0
+    2    720     576    25/1       720   576         3    67138         0
+---------------------------- OutputPort of dev: 1 -----------------------------
+ChnId  CODEC  Profile   BufSize MinAllocSize  RefNum  bByFrame  FrameCnt  DropCnt  ReEncCnt  RingUnreadCnt  
+RingTotalCnt   UsrLockedCnt
+
+    1   H265        0   1036800       345600       0         1      8210        0         0              
+0             0              0
+
+    2   H264        0    207360        69120       0         1         3        0         0              
+3             3              0
+
+ChnId RateCtl  GOP MaxBitrate  IPQPDelta  MaxQp  MinQp  MaxIQp  MinIQp  QpMap  AbsQp  ModeMap
+    1     CBR   30    1572864          0     48     12      48      12      0      0        0
+    2     CBR   30    2097152          0     48     12      48      12      0      0        0
+
+
+
+
+
+
+
+
+
+
+
+
+
+

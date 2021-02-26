@@ -1,0 +1,8 @@
+{
+    "product_name":"NVR",
+    "product_version":"0.0.1",
+    "screen_size_width":1024,
+    "screen_size_height":600,
+    "max_video_decoder_num":4,
+    "max_ipc_view_num":4
+}
